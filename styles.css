@@ -1,3 +1,8 @@
+@font-face {
+    font-family: calculator;
+    src: url(Calculator.ttf);
+}
+
 html {
     min-height: 100%;
 }
@@ -5,7 +10,7 @@ html {
 body {
     text-align: center;
     background-color:rgb(133, 87, 188);
-    background-image: linear-gradient(to bottom right, #392270, #E9275B);
+    background-image: linear-gradient(to top left, #392270, #E9275B);
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0;
     justify-content: center;
@@ -25,21 +30,56 @@ body {
     box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.71);
 }
 
-
+output {
+    font-family: calculator;
+    padding: 5px;
+    margin-right: 5px;
+    font-weight: bold;
+    font-size: 30px;
+}
 
 .display {
-    background-color: darkgrey;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items:flex-end;
+    margin: 10px;
+    background-color: rgb(99, 97, 97);
     height: 90px;
     width: 90%;
-    border-radius: 10px;;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 2px 1px rgba(0,0,0,0.71);
+}
+
+#buttons {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 0 1;
+    align-items: center;
+    padding: 21px;
 }
 
 button {
+    color:#E9275B;
+    font-size: 20px;
+    font-weight: 800;
     border: 0px solid transparent;
     background-color: #392270;
     height: 60px;
     width: 60px;
     border-radius: 10px;
+    margin: 2px;
+    padding: 0;
+    cursor: pointer;
+}
+
+button:active {
+    transform: translate(1px, 2px);
+}
+
+button:hover {
+    background-color: rgb(221, 206, 93);
 }
 
 #equal {
