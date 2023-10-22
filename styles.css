@@ -65,7 +65,7 @@ button {
     font-size: 20px;
     font-weight: 800;
     border: 0px solid transparent;
-    background-color: #392270;
+    background-color: #291850;
     height: 60px;
     width: 60px;
     border-radius: 10px;
@@ -84,4 +84,5 @@ button:hover {
 
 #equal {
     width: 125px;
+    background-color: #1c0872;
 }
