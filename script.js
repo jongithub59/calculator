@@ -13,7 +13,7 @@ const resultDisplay = document.getElementById('result');
 //when a button is pressed
 clearDisplay.addEventListener('click', clearAll);
 clear.addEventListener('click', clearEntry);
-equal.addEventListener('click', calculate);
+equal.addEventListener('click', evaluate);
 
 
 numButtons.forEach((button) =>
@@ -37,6 +37,7 @@ function newNumber(number) {
     } else {
     sectionOne.innerHTML += number;
     firstNumber = sectionOne.innerHTML;
+    console.log(firstNumber);
     }
 }
 
@@ -44,25 +45,33 @@ function addOperation(operator) {
     if (currentOperator != '') return;
     sectionTwo.innerHTML += ' ' + operator + ' ';
     currentOperator = operator;
+    console.log(currentOperator);
 }
 //if decimal is pressed add a "." to the current number but only once per number
 //when equal is pressed calculate the result and display it
-function calculate(currentOperator, firstNumber, secondNumber) {
+function evaluate() {
+    resultDisplay.innerHTML = calculate(firstNumber, currentOperator, secondNumber);
+}
+
+function calculate( firstNumber, currentOperator, secondNumber) {
     switch (currentOperator) {
         case '+':
-            add(firstNumber, secondNumber);
+           return add(firstNumber, secondNumber);
         break;
         case '-':
-            subtract(firstNumber, secondNumber);
+            return subtract(firstNumber, secondNumber);
         break;
         case '×':
-            resultDisplay.innerHTML = multiply(firstNumber, secondNumber);
+            console.log('working')
+            console.log(firstNumber)
+            console.log(secondNumber)
+            return multiply(firstNumber, secondNumber);
         break;
         case '÷':
-            divide(firstNumber, secondNumber);
+            return divide(firstNumber, secondNumber);
         break;
         case '^':
-            exponent(firstNumber, secondNumber);
+            return exponent(firstNumber, secondNumber);
         break;
     }
 }
