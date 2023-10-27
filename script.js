@@ -1,6 +1,8 @@
 let firstNumber = '';
 let secondNumber = '';
 let currentOperator = '';
+let result = '';
+secondOperator = '';
 const clearDisplay = document.getElementById('clear-all');
 const clear = document.getElementById('clear');
 const equal = document.getElementById('equal');
@@ -30,22 +32,25 @@ function clearEntry() {
 
 //add its value to a variable
 function newNumber(number) {
+    //if an op exists fill the next section as teh second number
     if (currentOperator != '') {
     sectionThree.innerHTML += number;
     secondNumber = sectionThree.innerHTML;
-    console.log(secondNumber);
     } else {
     sectionOne.innerHTML += number;
     firstNumber = sectionOne.innerHTML;
-    console.log(firstNumber);
     }
 }
 
 function addOperation(operator) {
-    if (currentOperator != '') return;
+    //if equation is filled out calculate it and save the op used for the next equation
+    if (currentOperator != '' && firstNumber != '' && secondNumber != '') {
+    secondOperator = operator;
+    nextOperation();
+    }
+    if (currentOperator != '') return; //prevents more ops from being added if one exists
     sectionTwo.innerHTML += ' ' + operator + ' ';
     currentOperator = operator;
-    console.log(currentOperator);
 }
 //if decimal is pressed add a "." to the current number but only once per number
 //when equal is pressed calculate the result and display it
@@ -53,45 +58,61 @@ function evaluate() {
     resultDisplay.innerHTML = calculate(firstNumber, currentOperator, secondNumber);
 }
 
+function nextOperation() {
+    resultDisplay.innerHTML = calculate(firstNumber, currentOperator, secondNumber)
+    //partially reset display to only show the resultand op clicked as the first number of a new equation
+    firstNumber = result;
+    currentOperator = secondOperator;
+    secondNumber = '';
+    sectionOne.innerHTML = firstNumber;
+    sectionTwo.innerHTML = ''
+    sectionThree.innerHTML = ''
+ 
+    sectionTwo.innerHTML = ' ' + currentOperator + ' ';
+
+    
+
+}
+
 function calculate( firstNumber, currentOperator, secondNumber) {
     switch (currentOperator) {
         case '+':
            return add(firstNumber, secondNumber);
-        break;
         case '-':
             return subtract(firstNumber, secondNumber);
-        break;
         case '×':
-            console.log('working')
-            console.log(firstNumber)
-            console.log(secondNumber)
             return multiply(firstNumber, secondNumber);
-        break;
         case '÷':
             return divide(firstNumber, secondNumber);
-        break;
         case '^':
             return exponent(firstNumber, secondNumber);
-        break;
     }
 }
 
 function add(firstNumber, secondNumber) {
-    return firstNumber + secondNumber;
+    //convert number to integer in case + would concatenate
+    firstNumber = +firstNumber;
+    secondNumber = +secondNumber;
+    console.log(typeof(firstNumber))
+    result = firstNumber + secondNumber;
+    return result;
 }
 function subtract(firstNumber, secondNumber) {
-    return firstNumber - secondNumber;
+    result = firstNumber - secondNumber;
+    return result;
 }
 function multiply(firstNumber, secondNumber) {
-    return firstNumber * secondNumber;
+    result = firstNumber * secondNumber;
+    return result;
 }
 function divide(firstNumber, secondNumber) {
-    return firstNumber / secondNumber;
+    result = firstNumber / secondNumber;
+    return result;
 }
 function exponent(firstNumber, secondNumber) {
-    return firstNumber ** secondNumber;
+    result = firstNumber ** secondNumber;
+    return result;
 }
-//when an operation button is pressed display the result of the previous pair of numbers and use the result for the next input
 //if all clear is pressed clear the display
 function clearAll() {
     sectionOne.innerHTML = ''
