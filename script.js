@@ -93,7 +93,6 @@ function add(firstNumber, secondNumber) {
     //convert number to integer in case + would concatenate
     firstNumber = +firstNumber;
     secondNumber = +secondNumber;
-    console.log(typeof(firstNumber))
     result = firstNumber + secondNumber;
     return result;
 }
@@ -107,7 +106,9 @@ function multiply(firstNumber, secondNumber) {
 }
 function divide(firstNumber, secondNumber) {
     if (secondNumber == 0) return result = 'Dude! No dividing by 0';
-    result = firstNumber / secondNumber;
+    result = (firstNumber / secondNumber).toFixed(5);
+    console.log(result)
+    // result = +result;
     return result;
 }
 function exponent(firstNumber, secondNumber) {
