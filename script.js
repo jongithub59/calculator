@@ -60,6 +60,9 @@ function addOperation(operator) {
 //if decimal is pressed add a "." to the current number but only once per number
 //when equal is pressed calculate the result and display it
 function evaluate() {
+    if (firstNumber == '' ||
+    currentOperator == '' ||
+    secondNumber == '') return
     
 	resultDisplay.innerHTML = calculate(firstNumber, currentOperator, secondNumber)
 	firstNumber = result
