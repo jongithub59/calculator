@@ -2,7 +2,7 @@ let firstNumber = '';
 let secondNumber = '';
 let currentOperator = '';
 let result = '';
-secondOperator = '';
+let secondOperator = '';
 const clearDisplay = document.getElementById('clear-all');
 const clear = document.getElementById('clear');
 const equal = document.getElementById('equal');
@@ -26,9 +26,6 @@ opButtons.forEach((button) =>
     button.addEventListener('click', () => addOperation(button.textContent))
 );
 
-function clearEntry() {
-
-}
 
 //add its value to a variable
 function newNumber(number) {
@@ -127,5 +124,22 @@ function clearAll() {
 }
 //if clear is pressed delete the previously added input only
 function clearEntry() {
-
+    if (sectionOne.innerHTML != '' && 
+    sectionTwo.innerHTML == '' && 
+    sectionThree.innerHTML == '') {
+    sectionOne.innerHTML = '';
+    firstNumber = '';
+    }
+    if (sectionOne.innerHTML != '' && 
+    sectionTwo.innerHTML != '' && 
+    sectionThree.innerHTML == '') {
+    sectionTwo.innerHTML = '';
+    currentOperator = '';
+    }
+    if (sectionOne.innerHTML != '' && 
+    sectionTwo.innerHTML != '' && 
+    sectionThree.innerHTML != ''){
+    sectionThree.innerHTML = '';
+    secondNumber = '';
+    }
 }
