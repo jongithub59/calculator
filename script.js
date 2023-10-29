@@ -106,6 +106,7 @@ function multiply(firstNumber, secondNumber) {
     return result;
 }
 function divide(firstNumber, secondNumber) {
+    if (secondNumber == 0) return result = 'Dude! No dividing by 0';
     result = firstNumber / secondNumber;
     return result;
 }
