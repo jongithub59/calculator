@@ -6,6 +6,7 @@ let secondOperator = '';
 const clearDisplay = document.getElementById('clear-all');
 const clear = document.getElementById('clear');
 const equal = document.getElementById('equal');
+const decimal = document.getElementById('decimal');
 const numButtons = document.querySelectorAll('[number]');
 const opButtons = document.querySelectorAll('[operator]');
 const sectionOne = document.getElementById('first-number')
@@ -16,6 +17,7 @@ const resultDisplay = document.getElementById('result');
 clearDisplay.addEventListener('click', clearAll);
 clear.addEventListener('click', clearEntry);
 equal.addEventListener('click', evaluate);
+decimal.addEventListener('click', addDecimal);
 
 
 numButtons.forEach((button) =>
@@ -26,10 +28,14 @@ opButtons.forEach((button) =>
     button.addEventListener('click', () => addOperation(button.textContent))
 );
 
+function addDecimal() {
+    
+}
+
 
 //add its value to a variable
 function newNumber(number) {
-    //if an op exists fill the next section as teh second number
+    //if an op exists fill the next section as thh second number
     if (currentOperator != '') {
     sectionThree.innerHTML += number;
     secondNumber = sectionThree.innerHTML;
@@ -104,8 +110,8 @@ function multiply(firstNumber, secondNumber) {
 function divide(firstNumber, secondNumber) {
     if (secondNumber == 0) return result = 'Dude! No dividing by 0';
     result = (firstNumber / secondNumber).toFixed(5);
-    console.log(result)
-    // result = +result;
+    result = +result;
+    if (Number.isInteger(result)) return Math.round(result);
     return result;
 }
 function exponent(firstNumber, secondNumber) {
