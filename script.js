@@ -23,6 +23,7 @@ numButtons.forEach((button) => button.addEventListener('click', () => newNumber(
 
 opButtons.forEach((button) => button.addEventListener('click', () => addOperation(button.textContent)))
 
+//if decimal is pressed add a "." to the current number but only once per number
 function addDecimal() {
 	if (currentOperator != '') {
 		if (secondNumber.includes('.')) return
@@ -57,7 +58,6 @@ function addOperation(operator) {
 	sectionTwo.innerHTML += ' ' + operator + ' '
 	currentOperator = operator
 }
-//if decimal is pressed add a "." to the current number but only once per number
 //when equal is pressed calculate the result and display it
 function evaluate() {
     if (firstNumber == '' ||
